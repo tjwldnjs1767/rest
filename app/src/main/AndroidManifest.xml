@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="rest.rest">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+
+    <application
+        android:name="rest.rest.screenFilter.application.SaveLightValue"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name="rest.rest.loading.activity.LoadingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="rest.rest.MainActivity"></activity>
+        <activity android:name="rest.rest.reference.activity.ReferenceActivity"></activity>
+        <activity android:name="rest.rest.notification.activity.MakeNotificationActivity"></activity>
+        <activity android:name="rest.rest.eyesStretching.activity.EyesStretchingActivity" />
+
+        <service android:name="rest.rest.phoneUsageTimeNoti.service.phoneUsageTimeNotiService" />
+        <service android:name="rest.rest.screenFilter.service.ScreenFilterService" />
+
+        <service
+            android:name="rest.rest.correctPostureNoti.service.FaceDetectionService"
+            android:process=".remote">
+            <intent-filter>
+                <action android:name=".startService"></action>
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>
